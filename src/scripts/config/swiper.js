@@ -15,8 +15,12 @@ export const fullPage = {
     el: '.full-page-slider-pagination',
     type: 'bullets',
     clickable: true,
-    renderBullet: (index, className) =>
-      `<div class="${className} full-page-slider-pagination__link"><span>${NAV_LIST[index].name}</span></div>`,
+    renderBullet: function(index, className){
+      if (NAV_LIST[index].hash=="tau"){
+        className = className+" tau_hidden";
+      }
+      return `<div class="${className} full-page-slider-pagination__link"><span>${NAV_LIST[index].name}</span></div>`;
+    },
   },
   breakpoints: {
     1024: {

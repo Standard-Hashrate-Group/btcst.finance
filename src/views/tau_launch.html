@@ -1,0 +1,125 @@
+<style>
+  
+  .launch_body {
+    background: #000;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 120px;
+  }
+  .title-soon {
+    font-size: 24px;
+    font-family: Manrope-SemiBold, Manrope;
+    font-weight: 600;
+    color: #fff;
+    line-height: 33px;
+    text-align: center;
+    margin: 52px 0 28px;
+  }
+  .launch_logo {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40%;
+    width: 180px;
+    /* border: 1px dashed rgba(255, 255, 255, 0.5); */
+  }
+  .time-group {
+    font-size: 12px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .time-group .time-item {
+    padding: 0 16px;
+    text-align: center;
+    font-family: Manrope-ExtraLight_Regular, Manrope;
+  }
+  .time-group .time-num {
+    font-size: 40px;
+    font-family: Manrope-SemiBold, Manrope;
+    margin-bottom: 8px;
+  }
+  .section--tau > .section__layout{
+    justify-content: flex-start;
+  }
+  @media screen and (min-width: 1024px) {
+    .launch_body {
+      padding-top: 180px;
+    }
+    .launch_logo {
+      width: 224px;
+      margin-top: 0;
+    }
+    .section--tau > .section__layout{
+      justify-content: flex-end;
+    }
+  }
+  .tau_wrap{
+    top: 0px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+</style>
+<section class="swiper-slide section section--tau" data-hash="tau">
+  <div class="section__layout">
+    <!-- <div class="tau-bg">
+    
+    </div> -->
+    <div class="tau_wrap">
+      <img class="launch_logo" src="./static/launch-logo.png" alt="">
+      <div class="title-soon">Coming Soon</div>
+      <div class="time-group">
+        <div class="time-item">
+          <div id="countdown-day" class="time-num">7</div>
+          <div>Days</div>
+        </div>
+        <div class="time-item">
+          <div id="countdown-hour" class="time-num">00</div>
+          <div>Hours</div>
+        </div>
+        <div class="time-item">
+          <div id="countdown-minute" class="time-num">00</div>
+          <div>Minutes</div>
+        </div>
+        <div class="time-item">
+          <div id="countdown-second" class="time-num">00</div>
+          <div>Seconds</div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+  <script>
+    (function () {
+      const day = document.getElementById('countdown-day');
+      const hours = document.getElementById('countdown-hour');
+      const minute = document.getElementById('countdown-minute');
+      const second = document.getElementById('countdown-second');
+      let final = 1616500800000;//march-23
+      final = 1616155200000;//march-19
+
+      const formatNumber = n => {
+        n = n.toString()
+        return n[1] ? n : '0' + n
+      }
+
+      function countdown() {
+        var offset = final - Date.now();
+        if (offset <= 0) {
+          day.innerText = hours.innerText = minute.innerText = second.innerText = '00';
+        } else {
+          day.innerText = Math.floor(offset / (24 * 3600 * 1000));
+          hours.innerText = formatNumber(new Date(offset).getHours());
+          minute.innerText = formatNumber(new Date(offset).getMinutes());
+          second.innerText = formatNumber(new Date(offset).getSeconds());
+        }
+      }
+      setInterval(countdown, 1000);
+      countdown();
+    })();
+  </script>
+  <div class="mobile-pagination" data-index="2">
+    <span></span>
+  </div>
+</section>
