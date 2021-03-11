@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Launching Soon</title>
+  <link rel="icon" href="./static/favicon.ico" type="image/x-icon">
+  <title>Coming Soon</title>
   <style>
     body {
       background: #000;
@@ -24,7 +25,7 @@
       display: block;
       margin: 0 auto;
       width: 180px;
-      border: 1px dashed rgba(255, 255, 255, 0.5);
+      /* border: 1px dashed rgba(255, 255, 255, 0.5); */
     }
     .time-group {
       font-size: 12px;
@@ -55,10 +56,10 @@
 </head>
 <body>
   <img class="logo" src="./static/launch-logo.png" alt="">
-  <div class="title-soon">Launching Soon</div>
+  <div class="title-soon">Coming Soon</div>
   <div class="time-group">
     <div class="time-item">
-      <div id="countdown-day" class="time-num">10</div>
+      <div id="countdown-day" class="time-num">7</div>
       <div>Days</div>
     </div>
     <div class="time-item">
@@ -76,20 +77,27 @@
   </div>
   <script>
     (function () {
-      var day = document.getElementById('countdown-day');
-      var hours = document.getElementById('countdown-hour');
-      var minute = document.getElementById('countdown-minute');
-      var second = document.getElementById('countdown-second');
-      var final = new Date(2021, 3, 1, 0);
+      const day = document.getElementById('countdown-day');
+      const hours = document.getElementById('countdown-hour');
+      const minute = document.getElementById('countdown-minute');
+      const second = document.getElementById('countdown-second');
+      let final = 1616500800000;//march-23
+      final = 1616155200000;//march-19
+
+      const formatNumber = n => {
+        n = n.toString()
+        return n[1] ? n : '0' + n
+      }
+
       function countdown() {
-        var offset = parseInt((final - Date.now()) / 1000, 10);
+        var offset = final - Date.now();
         if (offset <= 0) {
           day.innerText = hours.innerText = minute.innerText = second.innerText = '00';
         } else {
-          second.innerText = offset % 60;
-          minute.innerText = parseInt(offset / 60, 10) % 60;
-          hours.innerText = parseInt(offset / 3600, 10) % 60;
-          day.innerText = parseInt(offset / 216000, 10) % 24;
+          day.innerText = Math.floor(offset / (24 * 3600 * 1000));
+          hours.innerText = formatNumber(new Date(offset).getHours());
+          minute.innerText = formatNumber(new Date(offset).getMinutes());
+          second.innerText = formatNumber(new Date(offset).getSeconds());
         }
       }
       setInterval(countdown, 1000);

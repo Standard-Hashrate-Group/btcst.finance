@@ -7,6 +7,8 @@ import { fullPage, commentConfig } from './config/swiper';
 
 MicroModal.init();
 
+let showTouLink = Date.now() >= 1615521600000;
+// showTouLink = true;
 const fullPageSwiper = new Swiper('.full-page-slider', fullPage);
 // const commentSwiper = new Swiper('.members-comment-list', commentConfig);
 
@@ -89,6 +91,12 @@ document.querySelectorAll('.btcst-list-item-header').forEach((ele) => {
     ele.parentElement.classList.add('active');
   });
 });
+
+if (showTouLink) {
+  document.querySelectorAll('.tau-link').forEach(ele => {
+    ele.classList.remove('hide');
+  });
+}
 
 document.querySelectorAll('.mobile-pagination').forEach((ele, index) => {
   ele.children[0].addEventListener('click', (e) => {

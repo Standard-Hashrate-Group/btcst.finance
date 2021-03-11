@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="./styles/index.less" />
     <link rel="stylesheet" href="./styles/responsive.less" />
     <title>BTC Standard Hashrate Token</title>
+    <script>
+      if (process.env.NODE_ENV === 'production' && new Date().getTime() >= 1615305600000) {
+        location.href = 'https://www.btcst.finance';
+      }
+    </script>
   </head>
   <body>
     <main>
@@ -49,6 +54,7 @@
               >
               <a target="_blank" href="http://vote.btcst.finance/">VOTE</a>
               <a href="mailto: support@btcst.zendesk.com">SUPPORT</a>
+              <a target="_blank" class="hide tau-link"  href="./launch.html">Tau</a>
             </div>
             <div class="nav-footer-links footer-links">
               <a
@@ -96,6 +102,7 @@
             >
             <a target="_blank" href="http://vote.btcst.finance/">VOTE</a>
             <a href="mailto: support@btcst.zendesk.com">SUPPORT</a>
+            <a target="_blank" class="hide tau-link" href="./launch.html">Tau</a>   
           </div>
 
           <div class="footer-links">
@@ -123,7 +130,15 @@
         </div>
       </footer>
     </main>
-
+    <script>
+      let domain = "www.btcst.finance";
+      let domain2 = "btcst.finance";
+      if ( window.location.host!=domain && window.location.host!=domain2
+          && window.location.host.indexOf("localhost")==-1){
+        let to = window.location.href.replace(window.location.host,domain);
+        window.location.replace(to);
+      }
+    </script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

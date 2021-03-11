@@ -1,9 +1,9 @@
-const fsPromise = require('fs/promises');
 const path = require('path');
+const fs = require('fs');
 const rimraf = require('rimraf');
 const Parcel = require('@parcel/core').default;
 const ncp = require('ncp').ncp;
-const distDir = path.join(__dirname, '../docs')
+const distDir = path.join(__dirname, '../docs');
 
 console.log(distDir)
 
@@ -28,7 +28,7 @@ rimraf(path.join(__dirname, '../docs'), (err) => {
     await bundler.run();
 
     try {
-      await fsPromise.copyFile(
+      fs.copyFileSync(
         path.join(__dirname, '../CNAME'),
         path.join(__dirname, '../docs/CNAME')
       );
