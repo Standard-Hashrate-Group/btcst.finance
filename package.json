@@ -2,7 +2,7 @@
   "scripts": {
     "start": "parcel serve ./src/*.html",
     "build": "cross-env NODE_ENV=production node ./scripts/build.js"
-  },
+  }, 
   "devDependencies": {
     "@parcel/optimizer-cssnano": "2.0.0-nightly.612",
     "@parcel/optimizer-htmlnano": "2.0.0-nightly.612",
